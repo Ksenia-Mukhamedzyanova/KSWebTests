@@ -4,6 +4,7 @@ from pages.LoginPage import LoginPageHelper
 import allure
 
 BASE_URL = 'https://ok.ru/'
+LOGIN_TEXT = "+79621531692"
 EMPTY_LOGIN_ERROR = 'Введите логин'
 EMPTY_PASSWORD_ERROR = 'Введите пароль'
 
@@ -20,7 +21,7 @@ def test_empty_login_and_password_fields(browser):
 def test_empty_password_field(browser):
     BasePage(browser).get_url(BASE_URL)
     LoginPage = LoginPageHelper(browser)
-    LoginPage.fill_in_password_field()
+    LoginPage.type_login(LOGIN_TEXT)
     LoginPage.click_login()
     assert LoginPage.get_error_text() == EMPTY_PASSWORD_ERROR
 
